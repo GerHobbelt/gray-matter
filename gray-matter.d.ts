@@ -30,8 +30,8 @@ declare namespace matter {
     excerpt_separator?: string
     engines?: {
       [index: string]:
-        | ((string) => object)
-        | { parse: (string) => object; stringify?: (object) => string }
+        | ((s: string) => object)
+        | { parse: (s: string) => object; stringify?: (o: object) => string }
     }
     language?: string
     delimiters?: string | [string, string]
