@@ -82,6 +82,10 @@ declare namespace matter {
      * The front-matter language that was parsed. yaml is the default
      */
     language: string
+	/**
+	 * Engine specific delimiters.
+	 */
+    delimiters: [string, string]
     /**
      * The raw, un-parsed front-matter string
      */
@@ -159,7 +163,7 @@ declare namespace matter {
   export function language<O extends matter.GrayMatterOption<string, O>>(
     str: string,
     options?: GrayMatterOption<string, O>
-  ): { name: string; raw: string }
+  ): { name: string; raw: string; delimiters: null | [string, string] }
 }
 
 export = matter
