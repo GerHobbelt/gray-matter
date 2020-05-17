@@ -104,9 +104,8 @@ function parseMatter(file, options) {
     file.empty = file.content;
     file.data = {};
   } else {
-
     // create file.data by parsing the raw file.matter block
-    file.data = parse(file.language, file.matter, opts);
+    file.data = parse(file.language, file.matter.trim(), opts);
   }
 
   // update file.content

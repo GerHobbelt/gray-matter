@@ -4,6 +4,7 @@ require('mocha');
 var assert = require('assert');
 var utils = require('../lib/utils');
 var matter = require('..');
+var toml = require('toml');
 
 describe('gray-matter (windows carriage returns)', function() {
   it('should extract YAML front matter', function() {
@@ -83,5 +84,18 @@ describe('gray-matter (windows carriage returns)', function() {
     assert.deepEqual(actual.data, {});
     assert.equal(actual.content, '-----------name--------------value\r\nfoo');
     assert.equal(String(actual.orig), '-----------name--------------value\r\nfoo');
+  });
+
+  it('should parse toml front matter.', function() {
+    var actual = matter('---toml\r\ntitle = "TOML"\r\ndescription = "Front matter"\r\ncategories = "front matter toml"\r\n---\r\n\r\n# This file has toml front matter!\r\n', {
+      engines: {
+        toml: toml.parse.bind(toml)
+      }
+    });
+    console.log(actual);
+    assert.equal(actual.data.title, 'TOML');
+    assert(actual.hasOwnProperty('data'));
+    assert(actual.hasOwnProperty('content'));
+    assert(actual.hasOwnProperty('orig'));
   });
 });
