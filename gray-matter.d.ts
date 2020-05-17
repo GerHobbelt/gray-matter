@@ -82,10 +82,10 @@ declare namespace matter {
      * The front-matter language that was parsed. yaml is the default
      */
     language: string
-	/**
-	 * Engine specific delimiters.
-	 */
-    delimiters: [string, string]
+    /**
+     * Engine specific delimiters.
+     */
+    delimiters?: [string, string]
     /**
      * The raw, un-parsed front-matter string
      */
